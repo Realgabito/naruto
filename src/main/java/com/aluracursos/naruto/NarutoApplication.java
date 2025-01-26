@@ -1,6 +1,6 @@
 package com.aluracursos.naruto;
 
-import com.aluracursos.naruto.main.ClanMain;
+
 import com.aluracursos.naruto.main.Main;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
