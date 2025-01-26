@@ -30,13 +30,15 @@ public record CharactersInfo(
 
         if (family != null) {
             sb.append("Family: \n");
-            sb.append("     Father: ").append(family.get("father")).append("\n");
-            sb.append("     Mother: ").append(family.get("mother")).append("\n");
+            sb.append("     Father: ").append(family.getOrDefault("father", "Unknown")).append("\n");
+            sb.append("     Mother: ").append(family.getOrDefault("mother", "Unknown")).append("\n");
             sb.append("     Brother: ").append(family.getOrDefault("brother", "Unknown")).append("\n");
             sb.append("     Niece: ").append(family.getOrDefault("niece", "Unknown")).append("\n");
         }
 
         return sb.toString();
     }
+
+
 }
 
