@@ -78,7 +78,7 @@ public class Main {
                         }
 
                         if (option != 4) {
-                            continueMenu = askToContinue(); // Actualizar el control del bucle
+                            continueMenu = askToContinue(); //  Update the value of continueMenu
                         }
                     }
         }
@@ -189,24 +189,23 @@ public class Main {
 
         //Print the information of each member
         
-        // Inicializar un contador
+        
         int count = 0;
 
        
 
-        // Recorrer los miembros e imprimirlos en 5 columnas
         for (AkatsukiInfo member : akatsuki.akatsuki) {
             // Formatear cada celda
             System.out.printf("%-25s", member.member());
             count++;
 
-            // Cambiar de fila cada 5 elementos
+            
             if (count % 5 == 0) {
-                System.out.println(); // Salto de línea
+                System.out.println(); 
             }
         }
 
-        // Si hay elementos restantes, agregar un salto de línea final
+       
         if (count % 5 != 0) {
             System.out.println();
         }
