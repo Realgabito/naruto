@@ -1,5 +1,7 @@
 package com.aluracursos.naruto.main;
 
+import com.aluracursos.naruto.models.Akatsuki;
+import com.aluracursos.naruto.models.AkatsukiInfo;
 import com.aluracursos.naruto.models.CharactersInfo;
 import com.aluracursos.naruto.models.Clan;
 import com.aluracursos.naruto.models.ClansInfo;
@@ -16,6 +18,7 @@ public class Main {
     private RequestAPI requestAPI = new RequestAPI();
     private final String characterURL = "https://dattebayo-api.onrender.com/characters";
     private final String clanURL = "https://dattebayo-api.onrender.com/clans";
+    private final String akatsukiURL = "https://dattebayo-api.onrender.com/akatsuki";
     private ConvertData conversor = new ConvertData();
     
 
@@ -27,7 +30,9 @@ public class Main {
 
 
         int option = 0;
-        while (option != 3) {
+        boolean continueMenu = true;
+
+        while (continueMenu) {
             
             System.out.println("""
 
@@ -38,7 +43,8 @@ public class Main {
 
                     1. Search for a character
                     2. Search for a clan
-                    3. Exit
+                    3. List Akatsuki members
+                    4. Exit
                     
                     """);
 
@@ -50,17 +56,29 @@ public class Main {
             if (option >= 1 && option <= 3) {
                         
                 switch (option) {
-                        case 1:
-                            searchCharacter();
-                            break;
+                        case 1 -> searchCharacter();
+                            
                                             
-                        case 2:
-                            searchClan();
-                            break;
+                        case 2 -> searchClan();
+                            
 
-                        case 3:
+                        case 3 -> listAkatsuki();
+                        
+
+                        case 4 ->{ 
                             System.out.println("Goodbye!");
-                            break; 
+                                continueMenu = false;
+                                continue;
+                            }
+
+                        
+                        default -> System.out.println("Invalid option");
+
+
+                        }
+
+                        if (option != 4) {
+                            continueMenu = askToContinue(); // Actualizar el control del bucle
                         }
                     }
         }
@@ -153,6 +171,70 @@ public class Main {
                 """);
         }
 
+    }
+
+    private void listAkatsuki() {
+        System.out.println("""
+
+                -------------------------
+                ---- Akatsuki Members ----
+                -------------------------
+
+                """);
+
+        try {
+            //Realize a request to the API
+        var json = RequestAPI.getData(akatsukiURL);
+        var  akatsuki = conversor.getData(json, Akatsuki.class);
+
+        //Print the information of each member
+        
+        // Inicializar un contador
+        int count = 0;
+
+       
+
+        // Recorrer los miembros e imprimirlos en 5 columnas
+        for (AkatsukiInfo member : akatsuki.akatsuki) {
+            // Formatear cada celda
+            System.out.printf("%-25s", member.member());
+            count++;
+
+            // Cambiar de fila cada 5 elementos
+            if (count % 5 == 0) {
+                System.out.println(); // Salto de línea
+            }
+        }
+
+        // Si hay elementos restantes, agregar un salto de línea final
+        if (count % 5 != 0) {
+            System.out.println();
+        }
+
+        System.out.println("\n" +"-------------------------------------------");
+
+
+        } catch(Exception e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+
+    }
+
+    private boolean askToContinue() {
+        System.out.println("""
+
+                -------------------------
+                ---- Do you want to continue? ----
+                -------------------------
+                1. Yes
+                2. No
+
+                """);
+
+        int option = userInput.nextInt();
+        userInput.nextLine();
+
+        return option == 1;
     }
                         
 
