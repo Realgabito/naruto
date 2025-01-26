@@ -53,7 +53,7 @@ public class Main {
             option = userInput.nextInt();
             userInput.nextLine();
 
-            if (option >= 1 && option <= 3) {
+            if (option >= 1 && option <= 4) {
                         
                 switch (option) {
                         case 1 -> searchCharacter();
@@ -66,7 +66,13 @@ public class Main {
                         
 
                         case 4 ->{ 
-                            System.out.println("Goodbye!");
+                            System.out.println("""
+                                
+                                    ----------------------------------
+                                    ---- Thanks for using the app! ----
+                                    ------------------------------------4
+
+                                    """);
                                 continueMenu = false;
                                 continue;
                             }
