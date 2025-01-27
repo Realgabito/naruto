@@ -5,6 +5,7 @@ import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
+import java.text.Normalizer;
 
 public class RequestAPI {
     public static String getData(String url) {
@@ -28,4 +29,11 @@ public class RequestAPI {
         String json = response.body();
         return json;
     }
+
+    public static String normalize(String input) {
+        if (input == null) return null;
+        return Normalizer.normalize(input, Normalizer.Form.NFD)
+                .replaceAll("\\p{M}", "")
+                .toUpperCase();
+    } 
 }
