@@ -9,13 +9,13 @@ import com.aluracursos.naruto.models.Data;
 import com.aluracursos.naruto.service.ConvertData;
 import com.aluracursos.naruto.service.RequestAPI;
 
-import java.util.List;
+
 import java.util.Optional;
 import java.util.Scanner;
 
 public class Main {
     private Scanner userInput = new Scanner(System.in);
-    private RequestAPI requestAPI = new RequestAPI();
+    
     private final String characterURL = "https://dattebayo-api.onrender.com/characters";
     private final String clanURL = "https://dattebayo-api.onrender.com/clans";
     private final String akatsukiURL = "https://dattebayo-api.onrender.com/akatsuki";

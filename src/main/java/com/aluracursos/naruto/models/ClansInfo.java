@@ -7,7 +7,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.IOException;
 import java.util.List;
-import java.util.Map;
+
 import java.util.stream.Collectors;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public record ClansInfo(
@@ -17,11 +17,9 @@ public record ClansInfo(
 
         ) {
 
-            private static Map<Integer, String> characterIdToName;
+           
 
-            public static void setCharacterIdToName(Map<Integer, String> map) {
-                characterIdToName = map;
-            }
+           
 
     @Override
     public String toString() {
