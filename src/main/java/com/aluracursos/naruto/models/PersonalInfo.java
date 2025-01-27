@@ -20,4 +20,6 @@ public record PersonalInfo(
         @JsonAlias("team") String[] team,
         @JsonAlias("clan") String clan
 ) {
+
+       
 }

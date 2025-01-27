@@ -6,6 +6,8 @@ import com.aluracursos.naruto.models.CharactersInfo;
 import com.aluracursos.naruto.models.Clan;
 import com.aluracursos.naruto.models.ClansInfo;
 import com.aluracursos.naruto.models.Data;
+import com.aluracursos.naruto.models.TailBeasts;
+import com.aluracursos.naruto.models.tailed_beasts;
 import com.aluracursos.naruto.service.ConvertData;
 import com.aluracursos.naruto.service.RequestAPI;
 
@@ -19,6 +21,7 @@ public class Main {
     private final String characterURL = "https://dattebayo-api.onrender.com/characters";
     private final String clanURL = "https://dattebayo-api.onrender.com/clans";
     private final String akatsukiURL = "https://dattebayo-api.onrender.com/akatsuki";
+    private final String tailedURL = "https://dattebayo-api.onrender.com/tailed-beasts";
     private ConvertData conversor = new ConvertData();
     
 
@@ -44,7 +47,8 @@ public class Main {
                     1. Search for a character
                     2. Search for a clan
                     3. List Akatsuki members
-                    4. Exit
+                    4. List Tailed Beasts
+                    5. Exit
                     
                     """);
 
@@ -53,7 +57,7 @@ public class Main {
             option = userInput.nextInt();
             userInput.nextLine();
 
-            if (option >= 1 && option <= 4) {
+            if (option >= 1 && option <= 5) {
                         
                 switch (option) {
                         case 1 -> searchCharacter();
@@ -64,8 +68,10 @@ public class Main {
 
                         case 3 -> listAkatsuki();
                         
+                        case 4 -> listTailedBeasts();
 
-                        case 4 ->{ 
+
+                        case 5 ->{ 
                             System.out.println("""
                                 
                                     ----------------------------------
@@ -83,7 +89,7 @@ public class Main {
 
                         }
 
-                        if (option != 4) {
+                        if (option != 5) {
                             continueMenu = askToContinue(); //  Update the value of continueMenu
                         }
                     }
@@ -225,6 +231,53 @@ public class Main {
 
     }
 
+
+    private void listTailedBeasts() {
+        System.out.println("""
+
+                -------------------------
+                ---- Tailed Beasts ----
+                -------------------------
+
+                """);
+
+        try {
+            //Realize a request to the API
+        var json = RequestAPI.getData(tailedURL);
+        var  tailedBeast = conversor.getData(json, TailBeasts.class);
+
+        //Print the information of each member
+        
+        
+        int count = 0;
+
+       
+
+        for (tailed_beasts name : tailedBeast.listTailedBeast) {
+            // Formatear cada celda
+            System.out.printf("%-25s", name.name());
+            count++;
+
+            
+            if (count % 5 == 0) {
+                System.out.println(); 
+            }
+        }
+
+       
+        if (count % 5 != 0) {
+            System.out.println();
+        }
+
+        System.out.println("\n" +"-------------------------------------------");
+    } catch(Exception e) {
+        System.out.println("Error: " + e.getMessage());
+
+    }
+    }
+
+
+
     private boolean askToContinue() {
         System.out.println("""
 
@@ -241,6 +294,6 @@ public class Main {
 
         return option == 1;
     }
-                        
-
+         
 }
+
