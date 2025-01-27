@@ -61,11 +61,9 @@ public class Main {
                         
                 switch (option) {
                         case 1 -> searchCharacter();
-                            
-                                            
+                                                                      
                         case 2 -> searchClan();
                             
-
                         case 3 -> listAkatsuki();
                         
                         case 4 -> listTailedBeasts();
@@ -117,7 +115,7 @@ public class Main {
     json = RequestAPI.getData(characterURL + "?name=" + character.replace(" ", "%20"));
     var searchCharacter = conversor.getData(json, Data.class);
     Optional<CharactersInfo> searchedCharacter = searchCharacter.characters().stream()
-            .filter(c -> c.name().toUpperCase().contains(character.toUpperCase()))
+            .filter(c -> c.name() != null && RequestAPI.normalize(c.name()).contains(RequestAPI.normalize(character.toUpperCase())))
             .findFirst();
                         
     if (searchedCharacter.isPresent()) {
@@ -160,7 +158,7 @@ public class Main {
         json = RequestAPI.getData(clanURL + "?name=" + clan);
         var searchClan = conversor.getData(json, Clan.class);
         Optional<ClansInfo> searchedClan = searchClan.clans().stream()
-                .filter(c -> c.name().toUpperCase().contains(clan.toUpperCase()))
+                .filter(c -> RequestAPI.normalize(c.name()).contains(RequestAPI.normalize(clan.toUpperCase())))
                 .findFirst();
 
         //If the clan is found, print the information
