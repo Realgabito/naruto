@@ -3,7 +3,7 @@ package com.aluracursos.naruto.models;
 import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-
+import java.util.List;
 import java.util.Map;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -17,6 +17,8 @@ public record CharactersInfo(
 
         ) {
 
+    
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -25,7 +27,19 @@ public record CharactersInfo(
 
         //Accessing to "clan" information
 //        sb.append("Clan: ").append(personal != null && personal.clan() != null ? personal.clan() : "Unknown").append("\n");
-        String clan = personal != null ? (String) personal.getOrDefault("clan", "Unknown") : "Unknown";
+        String clan = "Unknown";
+
+        if (personal != null && personal.containsKey("clan")) {
+            Object clanValue = personal.get("clan");
+            if (clanValue instanceof String) {
+                clan = (String) clanValue;
+            } else if (clanValue instanceof List<?>) {
+                @SuppressWarnings("unchecked")
+                List<String> clans = (List<String>) clanValue;
+                clan = String.join(", ", clans);
+            }
+        }
+
         sb.append("Clan: ").append(clan).append("\n");
 
         if (family != null) {
