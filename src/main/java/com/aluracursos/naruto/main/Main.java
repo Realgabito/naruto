@@ -1,13 +1,13 @@
 package com.aluracursos.naruto.main;
 
-import com.aluracursos.naruto.models.Akatsuki;
-import com.aluracursos.naruto.models.AkatsukiInfo;
-import com.aluracursos.naruto.models.CharactersInfo;
-import com.aluracursos.naruto.models.Clan;
-import com.aluracursos.naruto.models.ClansInfo;
-import com.aluracursos.naruto.models.Data;
-import com.aluracursos.naruto.models.TailBeasts;
-import com.aluracursos.naruto.models.tailed_beasts;
+import com.aluracursos.naruto.models.akatsuki.Akatsuki;
+import com.aluracursos.naruto.models.akatsuki.AkatsukiInfo;
+import com.aluracursos.naruto.models.beasts.TailBeasts;
+import com.aluracursos.naruto.models.beasts.tailed_beasts;
+import com.aluracursos.naruto.models.characters.CharactersInfo;
+import com.aluracursos.naruto.models.characters.Data;
+import com.aluracursos.naruto.models.clan.Clan;
+import com.aluracursos.naruto.models.clan.ClansInfo;
 import com.aluracursos.naruto.service.ConvertData;
 import com.aluracursos.naruto.service.RequestAPI;
 

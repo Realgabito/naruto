@@ -1,5 +1,6 @@
-package com.aluracursos.naruto.models;
+package com.aluracursos.naruto.models.clan;
 
+import com.aluracursos.naruto.models.characters.CharactersInfo;
 import com.aluracursos.naruto.service.RequestAPI;
 import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;

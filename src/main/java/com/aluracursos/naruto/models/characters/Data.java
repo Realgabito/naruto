@@ -1,4 +1,4 @@
-package com.aluracursos.naruto.models;
+package com.aluracursos.naruto.models.characters;
 
 import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
