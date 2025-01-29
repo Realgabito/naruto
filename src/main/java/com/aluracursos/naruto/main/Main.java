@@ -202,8 +202,6 @@ public class Main {
         
         int count = 0;
 
-       
-
         for (AkatsukiInfo member : akatsuki.akatsuki) {
             // Formatear cada celda
             System.out.printf("%-25s", member.member());
@@ -249,8 +247,6 @@ public class Main {
         
         int count = 0;
 
-       
-
         for (tailed_beasts name : tailedBeast.listTailedBeast) {
             // Formatear cada celda
             System.out.printf("%-25s", name.name());
@@ -273,8 +269,6 @@ public class Main {
 
     }
     }
-
-
 
     private boolean askToContinue() {
         System.out.println("""
