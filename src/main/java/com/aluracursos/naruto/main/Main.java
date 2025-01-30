@@ -74,6 +74,7 @@ public class Main {
                                 
                                     ----------------------------------
                                     ---- Thanks for using the app! ----
+                                    ---- Developed by Victor Perdomo ----
                                     ------------------------------------4
 
                                     """);
