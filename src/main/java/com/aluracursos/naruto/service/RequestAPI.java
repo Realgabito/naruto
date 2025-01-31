@@ -8,6 +8,8 @@ import java.net.http.HttpResponse;
 import java.text.Normalizer;
 
 public class RequestAPI {
+
+    // Get data from the API
     public static String getData(String url) {
         HttpClient client = HttpClient.newHttpClient();
         HttpRequest request = HttpRequest.newBuilder()
@@ -30,6 +32,7 @@ public class RequestAPI {
         return json;
     }
 
+    // Normalize the input string
     public static String normalize(String input) {
         if (input == null) return null;
         return Normalizer.normalize(input, Normalizer.Form.NFD)

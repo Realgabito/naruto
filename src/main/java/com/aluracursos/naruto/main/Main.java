@@ -89,7 +89,7 @@ public class Main {
                         }
 
                         if (option != 5) {
-                            continueMenu = askToContinue(); //  Update the value of continueMenu
+                            continueMenu = askToContinue(); 
                         }
                     }
         }

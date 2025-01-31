@@ -29,6 +29,7 @@ public record CharactersInfo(
 //        sb.append("Clan: ").append(personal != null && personal.clan() != null ? personal.clan() : "Unknown").append("\n");
         String clan = "Unknown";
 
+        //Accessing to "clan" information
         if (personal != null && personal.containsKey("clan")) {
             Object clanValue = personal.get("clan");
             if (clanValue instanceof String) {
